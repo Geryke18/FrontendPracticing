@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="content-language" content="hu, hun, hungarian">
+	<meta name="viewport" content="width=device-width, maximum-scale=0.5">
+	
+	<title>Stopper</title>
+	
+	<style>
+	
+	body {
+	background-color: gray;
+	}
+	
+	#time {
+	font-size: 400%;
+	padding: 0;
+	margin: 0;
+	}
+	
+	div{
+	width: 100%;
+	text-align: center;
+	}
+	
+	#any {
+	margin: auto;
+	width: 15%;
+	background-color: white;
+	padding-bottom: 10px;
+	} 
+	
+	#animate {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	background-color: red;
+	}
+
+	</style>
+	
+</head>
+
+<body>
+	<br>
+	<div>
+	<div id="any">
+		<strong><p id="time"></p></strong>
+		<p>hh:mm:ss</p>
+		<button id="start">START</button>
+		<button id="reset">RESET</button>
+		<div id="animate"> 
+		
+		</div>
+	</div>
+	</div>
+
+<script>
+
+var h1 = document.getElementById('time'),
+	start = document.getElementById('start'),
+	reset = document.getElementById('reset'),
+	hours = 0,
+	min = 0,
+	sec = 0,
+	t;
+	
+h1.textContent = showTime();
+
+function count(){
+	sec++;
+	
+	if (sec == 60){
+		sec = 0;
+		min++;
+	}
+	if (min == 60){
+		min = 0;
+		hours++;
+	}
+	document.getElementById("any").style.width = (15+(sec * 1.44)) + "%";
+	h1.textContent = showTime();
+	timer();
+}
+function timer (){
+	t = setTimeout(count, 1000);
+}
+
+function makeTwoDigits (x){
+	return ('0' + x).substr(-2)
+}
+
+function showTime(){
+	return makeTwoDigits(hours) + ':' + makeTwoDigits(min) + ':' + makeTwoDigits(sec);
+}
+
+function startOrStop (){
+	if (start.textContent =='PAUSE'){
+		clearTimeout(t);
+		start.textContent = 'CONTINUE';
+		clearInterval(id);
+	}else{
+		timer();
+		 Move();
+		start.textContent = 'PAUSE';
+	}
+}
+
+function Move() {
+  var elem = document.getElementById("animate");
+  var pos = 0;
+  var down;
+  var id = setInterval(frame, 5);
+  function frame() {
+    if (pos == 100) {
+      down = 1;
+    }
+	if (pos = 0) {
+     down = 0;
+    }
+	if (down = 0){
+		pos++;
+		elem.style.left = pos + '%';
+	} else {
+		pos--;
+		elem.style.left = pos + '%';
+	}
+  }
+} 
+
+start.onclick = startOrStop;
+
+
+reset.onclick = function(){
+	clearTimeout(t)
+	min = 0,
+	sec = 0,
+	hours = 0;
+	document.getElementById("any").style.width = (15+(sec * 1.44)) + "%";
+	h1.textContent = showTime();
+	start.textContent = 'START';
+}
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="content-language" content="english">
+	<meta name="viewport" content="width=device-width, maximum-scale=0.5">
+
+	<title>Tip Calculator</title>
+
+	<style>
+
+	body {
+		color: black;
+		font-family: Comic Sans MS;
+		font-size: 100%;
+		text-align: center;
+	}
+
+	#container{
+		margin: auto;
+	}
+
+	#container2{
+		background-image: linear-gradient(-45deg, rgb(210, 210, 210) , white);
+		border-radius: 20px;
+		padding: 10px;
+		margin: 0px;
+		margin-left: 30px;
+		text-align: center;
+		width: 230px;
+	}
+
+	#container3{
+		background-image: linear-gradient(-45deg, rgb(210, 210, 210) , white);
+		border-radius: 20px;
+		padding: 15px;
+		padding-bottom: 5px;
+		margin: 0px;
+		margin-top: 10px;
+		margin-left: 30px;
+		text-align: left;
+		float: left;
+	}
+
+	#half{
+		color: green;
+	}
+
+	#add{
+		color: green;
+		cursor: pointer;
+		opacity: 0.8;
+	}
+
+	#remove{
+		color: red;
+		cursor: pointer;
+		opacity: 0.8;
+	}
+
+	b{
+		font-size: 150%;
+	}
+
+	#remove:hover{
+		opacity: 1;
+		background-color: rgba(255, 255, 255, 0.3);
+	}
+
+	#add:hover{
+		opacity: 1;
+		background-color: rgba(255, 255, 255, 0.3);
+	}
+
+	td, th {
+	  border: 1px solid rgb(200, 200, 200);
+		text-align: center;
+	}
+
+	p{
+		margin: 0px;
+	}
+
+	.short{
+		width: 50px;
+	}
+
+	.result{
+		font-size: 110%;
+		padding: 5px;
+		color: green;
+	}
+
+	input{
+		text-align: center;
+	}
+
+	table{
+		text-align: center;
+	}
+
+	</style>
+
+</head>
+
+<body>
+	<div id="container">
+		<div>
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU-sTOJBH80xnzKDnhtf7VlAOKq-tLf8sVxPOLnb_0i5hbfD6M&s" >
+		</div>
+		<div id="container2">
+			<p>How much? &euro;&euro;&euro;</p>
+			 <input type="text" id="money">
+			 <p>50% --> <span id="half"></span></p>
+		</div>
+		<div id="container3">
+			<table id="myTable">
+				<tr>
+					<th>Person</th>
+					<th>Work Time</th>
+					<th>Tip</th>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="short" type="text"></td>
+					<td class="result"></td>
+				</tr>
+			</table>
+			<div id="add">
+				<b>+</b> Add Row
+			</div>
+			<div id="remove">
+				<b>-</b> Remove Row
+			</div>
+		</div>
+	</div>
+
+<script>
+
+var table = document.getElementById("myTable");
+var cells = document.getElementsByClassName('result');
+var times = document.getElementsByClassName('short');
+var all = document.getElementById('money');
+var half = document.getElementById('half');
+var addButton = document.getElementById('add');
+var removeButton = document.getElementById('remove');
+let sumTimes = 0;
+
+function timer (){
+		t = setTimeout(caller, 500);
+}
+
+function caller (){
+		count();
+		timer();
+}
+
+function count(){
+		let halfMoney = all.value / 2;
+		sumTimes = 0;
+		half.textContent = halfMoney;
+		for (var i = 0; i < times.length; i++){
+			sumTimes = sumTimes + Number(times[i].value);
+		}
+		for (var j = 0; j < times.length; j++){
+			cells[j].textContent = (halfMoney/sumTimes) * Number(times[j].value);
+		}
+};
+
+addButton.onclick =  function myFunction() {
+  var row = table.insertRow(times.length+1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+	var cell3 = row.insertCell(2);
+  cell1.innerHTML = '<input type="text">';
+  cell2.innerHTML = '<input class="short" type="text">';
+	cell3.classList.add("result");
+}
+
+removeButton.onclick =  function myFunction() {
+	if (times.length > 1){
+		table.deleteRow(times.length);
+	}
+}
+
+timer();
+
+</script>
+
+
+</body>
+</html>
