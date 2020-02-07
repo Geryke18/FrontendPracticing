@@ -3,6 +3,7 @@
 <head>
 	<meta name="content-language" content="english">
 	<meta name="viewport" content="width=device-width, maximum-scale=0.5">
+	<meta charset="UTF-8">
 
 	<title>Tip Calculator</title>
 
@@ -13,6 +14,7 @@
 		font-family: Comic Sans MS;
 		font-size: 100%;
 		text-align: center;
+		margin: 0;
 	}
 
 	#container{
@@ -22,36 +24,38 @@
 	#container2{
 		background-image: linear-gradient(-45deg, rgb(210, 210, 210) , white);
 		border-radius: 20px;
-		padding: 10px;
+		padding: 0px;
 		margin: 0px;
-		margin-left: 30px;
+		margin-left: 10px;
+		margin-right: 10px;
 		text-align: center;
-		width: 230px;
+		width: inherit;
 	}
 
-	#container3{
+	.gesamtServ{
 		background-image: linear-gradient(-45deg, rgb(210, 210, 210) , white);
 		border-radius: 20px;
-		padding: 15px;
+		padding: 10px;
 		padding-bottom: 5px;
+		padding-top: 5px;
 		margin: 0px;
-		margin-top: 10px;
-		margin-left: 30px;
+		margin-left: 10px;
+		margin-top: 5px;
 		text-align: left;
 		float: left;
 	}
 
-	#half{
+	span{
 		color: green;
 	}
 
-	#add{
+	#add1, #add2, #add3{
 		color: green;
 		cursor: pointer;
 		opacity: 0.8;
 	}
 
-	#remove{
+	#remove1, #remove2, #remove3{
 		color: red;
 		cursor: pointer;
 		opacity: 0.8;
@@ -61,12 +65,12 @@
 		font-size: 150%;
 	}
 
-	#remove:hover{
+	#remove1, #remove2, #remove3:hover{
 		opacity: 1;
 		background-color: rgba(255, 255, 255, 0.3);
 	}
 
-	#add:hover{
+	#add1, #add2, #add3:hover{
 		opacity: 1;
 		background-color: rgba(255, 255, 255, 0.3);
 	}
@@ -74,19 +78,25 @@
 	td, th {
 	  border: 1px solid rgb(200, 200, 200);
 		text-align: center;
+		padding: 0;
+		margin: 0;
 	}
 
 	p{
 		margin: 0px;
 	}
 
-	.short{
+	.time1, .time2, .time3{
 		width: 50px;
 	}
 
-	.result{
+	.factor1, .factor2, .factor3{
+		width: 40px;
+	}
+
+	.result1, .result2, .result3{
 		font-size: 110%;
-		padding: 5px;
+		padding: 0px;
 		color: green;
 	}
 
@@ -96,6 +106,32 @@
 
 	table{
 		text-align: center;
+	}
+
+	h4{
+		margin-top: 0px;
+		margin-bottom: 5px;
+	}
+
+	h3{
+		margin-top: 0px;
+		margin-bottom: 0px;
+		padding-top: 8px;
+	}
+
+	ul {
+  display: inline-block;
+  list-style-type: none;
+	padding: 0px;
+	padding-top: 5px;
+	margin: 0px;
+	}
+
+	li {
+	width: 220px;
+	float: left;
+	margin-left: 20px;
+	margin-right: 20px;
 	}
 
 	</style>
@@ -108,42 +144,411 @@
 			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU-sTOJBH80xnzKDnhtf7VlAOKq-tLf8sVxPOLnb_0i5hbfD6M&s" >
 		</div>
 		<div id="container2">
-			<p>How much? &euro;&euro;&euro;</p>
-			 <input type="text" id="money">
-			 <p>50% --> <span id="half"></span></p>
+			<div class="">
+				<h3>Tip Gesamt &euro;&euro;&euro;</h3>
+			 	<input type="text" id="money">
+			</div>
+
+			 <ul id="gesamtServices">
+				 <li>
+					 Gesamt Service Abend (50%)<br>
+					 <span id="abend"></span></td>
+				 </li>
+				 <li>
+					Gesamt Service Früh (15%)<br>
+					<span id="fruh"></span>
+				 </li>
+				 <li>
+					Gesamt Küche (35%)<br>
+					<span id="kuch"></span>
+				</li>
+			 </ul>
 		</div>
-		<div id="container3">
+		<div class="gesamtServ">
+			<h4>Gesamt Service Abend</h4>
 			<table id="myTable">
 				<tr>
-					<th>Person</th>
-					<th>Work Time</th>
-					<th>Tip</th>
+					<td>Name</td>
+					<td> Faktor </td>
+					<td>Tage gearbeitet </td>
+					<td> gew. faktor </td>
+					<td> Tip p. P. </td>
 				</tr>
 				<tr>
 					<td><input type="text"></td>
-					<td><input class="short" type="text"></td>
-					<td class="result"></td>
+					<td><input class="factor1" type="text"></td>
+					<td><input class="time1" type="text"></td>
+					<td class="timeFac1"></td>
+					<td class="result1"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor1" type="text"></td>
+					<td><input class="time1" type="text"></td>
+					<td class="timeFac1"></td>
+					<td class="result1"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor1" type="text"></td>
+					<td><input class="time1" type="text"></td>
+					<td class="timeFac1"></td>
+					<td class="result1"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor1" type="text"></td>
+					<td><input class="time1" type="text"></td>
+					<td class="timeFac1"></td>
+					<td class="result1"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor1" type="text"></td>
+					<td><input class="time1" type="text"></td>
+					<td class="timeFac1"></td>
+					<td class="result1"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor1" type="text"></td>
+					<td><input class="time1" type="text"></td>
+					<td class="timeFac1"></td>
+					<td class="result1"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor1" type="text"></td>
+					<td><input class="time1" type="text"></td>
+					<td class="timeFac1"></td>
+					<td class="result1"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor1" type="text"></td>
+					<td><input class="time1" type="text"></td>
+					<td class="timeFac1"></td>
+					<td class="result1"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor1" type="text"></td>
+					<td><input class="time1" type="text"></td>
+					<td class="timeFac1"></td>
+					<td class="result1"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor1" type="text"></td>
+					<td><input class="time1" type="text"></td>
+					<td class="timeFac1"></td>
+					<td class="result1"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor1" type="text"></td>
+					<td><input class="time1" type="text"></td>
+					<td class="timeFac1"></td>
+					<td class="result1"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor1" type="text"></td>
+					<td><input class="time1" type="text"></td>
+					<td class="timeFac1"></td>
+					<td class="result1"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor1" type="text"></td>
+					<td><input class="time1" type="text"></td>
+					<td class="timeFac1"></td>
+					<td class="result1"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor1" type="text"></td>
+					<td><input class="time1" type="text"></td>
+					<td class="timeFac1"></td>
+					<td class="result1"></td>
 				</tr>
 			</table>
-			<div id="add">
+			<div id="add1">
 				<b>+</b> Add Row
 			</div>
-			<div id="remove">
+			<div id="remove1">
 				<b>-</b> Remove Row
 			</div>
 		</div>
+
+		<div class="gesamtServ">
+			<h4>Gesamt Service Früh</h4>
+			<table id="myTable2">
+				<tr>
+					<td>Name</td>
+					<td> Faktor </td>
+					<td>Tage gearbeitet </td>
+					<td> gew. faktor </td>
+					<td> Tip p. P. </td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor2" type="text"></td>
+					<td><input class="time2" type="text"></td>
+					<td class="timeFac2"></td>
+					<td class="result2"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor2" type="text"></td>
+					<td><input class="time2" type="text"></td>
+					<td class="timeFac2"></td>
+					<td class="result2"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor2" type="text"></td>
+					<td><input class="time2" type="text"></td>
+					<td class="timeFac2"></td>
+					<td class="result2"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor2" type="text"></td>
+					<td><input class="time2" type="text"></td>
+					<td class="timeFac2"></td>
+					<td class="result2"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor2" type="text"></td>
+					<td><input class="time2" type="text"></td>
+					<td class="timeFac2"></td>
+					<td class="result2"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor2" type="text"></td>
+					<td><input class="time2" type="text"></td>
+					<td class="timeFac2"></td>
+					<td class="result2"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor2" type="text"></td>
+					<td><input class="time2" type="text"></td>
+					<td class="timeFac2"></td>
+					<td class="result2"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor2" type="text"></td>
+					<td><input class="time2" type="text"></td>
+					<td class="timeFac2"></td>
+					<td class="result2"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor2" type="text"></td>
+					<td><input class="time2" type="text"></td>
+					<td class="timeFac2"></td>
+					<td class="result2"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor2" type="text"></td>
+					<td><input class="time2" type="text"></td>
+					<td class="timeFac2"></td>
+					<td class="result2"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor2" type="text"></td>
+					<td><input class="time2" type="text"></td>
+					<td class="timeFac2"></td>
+					<td class="result2"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor2" type="text"></td>
+					<td><input class="time2" type="text"></td>
+					<td class="timeFac2"></td>
+					<td class="result2"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor2" type="text"></td>
+					<td><input class="time2" type="text"></td>
+					<td class="timeFac2"></td>
+					<td class="result2"></td>
+				</tr>
+				<tr>
+					<td><input type="text"></td>
+					<td><input class="factor2" type="text"></td>
+					<td><input class="time2" type="text"></td>
+					<td class="timeFac2"></td>
+					<td class="result2"></td>
+				</tr>
+			</table>
+			<div id="add2">
+				<b>+</b> Add Row
+			</div>
+			<div id="remove2">
+				<b>-</b> Remove Row
+			</div>
+		</div>
+
+		<div class="gesamtServ">
+					<h4>Gesamt Küche</h4>
+					<table id="myTable3">
+						<tr>
+							<td>Name</td>
+							<td> Faktor </td>
+							<td>Tage gearbeitet </td>
+							<td> gew. faktor </td>
+							<td> Tip p. P. </td>
+						</tr>
+						<tr>
+							<td><input type="text"></td>
+							<td><input class="factor3" type="text"></td>
+							<td><input class="time3" type="text"></td>
+							<td class="timeFac3"></td>
+							<td class="result3"></td>
+						</tr>
+						<tr>
+							<td><input type="text"></td>
+							<td><input class="factor3" type="text"></td>
+							<td><input class="time3" type="text"></td>
+							<td class="timeFac3"></td>
+							<td class="result3"></td>
+						</tr>
+						<tr>
+							<td><input type="text"></td>
+							<td><input class="factor3" type="text"></td>
+							<td><input class="time3" type="text"></td>
+							<td class="timeFac3"></td>
+							<td class="result3"></td>
+						</tr>
+						<tr>
+							<td><input type="text"></td>
+							<td><input class="factor3" type="text"></td>
+							<td><input class="time3" type="text"></td>
+							<td class="timeFac3"></td>
+							<td class="result3"></td>
+						</tr>
+						<tr>
+							<td><input type="text"></td>
+							<td><input class="factor3" type="text"></td>
+							<td><input class="time3" type="text"></td>
+							<td class="timeFac3"></td>
+							<td class="result3"></td>
+						</tr>
+						<tr>
+							<td><input type="text"></td>
+							<td><input class="factor3" type="text"></td>
+							<td><input class="time3" type="text"></td>
+							<td class="timeFac3"></td>
+							<td class="result3"></td>
+						</tr>
+						<tr>
+							<td><input type="text"></td>
+							<td><input class="factor3" type="text"></td>
+							<td><input class="time3" type="text"></td>
+							<td class="timeFac3"></td>
+							<td class="result3"></td>
+						</tr>
+						<tr>
+							<td><input type="text"></td>
+							<td><input class="factor3" type="text"></td>
+							<td><input class="time3" type="text"></td>
+							<td class="timeFac3"></td>
+							<td class="result3"></td>
+						</tr>
+						<tr>
+							<td><input type="text"></td>
+							<td><input class="factor3" type="text"></td>
+							<td><input class="time3" type="text"></td>
+							<td class="timeFac3"></td>
+							<td class="result3"></td>
+						</tr>
+						<tr>
+							<td><input type="text"></td>
+							<td><input class="factor3" type="text"></td>
+							<td><input class="time3" type="text"></td>
+							<td class="timeFac3"></td>
+							<td class="result3"></td>
+						</tr>
+						<tr>
+							<td><input type="text"></td>
+							<td><input class="factor3" type="text"></td>
+							<td><input class="time3" type="text"></td>
+							<td class="timeFac3"></td>
+							<td class="result3"></td>
+						</tr>
+						<tr>
+							<td><input type="text"></td>
+							<td><input class="factor3" type="text"></td>
+							<td><input class="time3" type="text"></td>
+							<td class="timeFac3"></td>
+							<td class="result3"></td>
+						</tr>
+						<tr>
+							<td><input type="text"></td>
+							<td><input class="factor3" type="text"></td>
+							<td><input class="time3" type="text"></td>
+							<td class="timeFac3"></td>
+							<td class="result3"></td>
+						</tr>
+						<tr>
+							<td><input type="text"></td>
+							<td><input class="factor3" type="text"></td>
+							<td><input class="time3" type="text"></td>
+							<td class="timeFac3"></td>
+							<td class="result3"></td>
+						</tr>
+
+
+					</table>
+					<div id="add3">
+						<b>+</b> Add Row
+					</div>
+					<div id="remove3">
+						<b>-</b> Remove Row
+					</div>
+				</div>
 	</div>
+
 
 <script>
 
-var table = document.getElementById("myTable");
-var cells = document.getElementsByClassName('result');
-var times = document.getElementsByClassName('short');
-var all = document.getElementById('money');
-var half = document.getElementById('half');
-var addButton = document.getElementById('add');
-var removeButton = document.getElementById('remove');
-let sumTimes = 0;
+let table = document.getElementById("myTable");
+let table2 = document.getElementById("myTable2");
+let table3 = document.getElementById("myTable3");
+let cells1 = document.getElementsByClassName('result1');
+let faktor1 = document.getElementsByClassName('factor1');
+let times1 = document.getElementsByClassName('time1');
+let timeFak1 = document.getElementsByClassName('timeFac1');
+let cells2 = document.getElementsByClassName('result2');
+let faktor2 = document.getElementsByClassName('factor2');
+let times2 = document.getElementsByClassName('time2');
+let timeFak2 = document.getElementsByClassName('timeFac2');
+let cells3 = document.getElementsByClassName('result3');
+let faktor3 = document.getElementsByClassName('factor3');
+let times3 = document.getElementsByClassName('time3');
+let timeFak3 = document.getElementsByClassName('timeFac3');
+let all = document.getElementById('money');
+let abend = document.getElementById('abend');
+let fruh = document.getElementById('fruh');
+let kuch = document.getElementById('kuch');
+let addButton1 = document.getElementById('add1');
+let removeButton1 = document.getElementById('remove1');
+let addButton2 = document.getElementById('add2');
+let removeButton2 = document.getElementById('remove2');
+let addButton3 = document.getElementById('add3');
+let removeButton3 = document.getElementById('remove3');
+let sumTimes1 = 0;
+let sumTimes2 = 0;
+let sumTimes3 = 0;
 
 function timer (){
 		t = setTimeout(caller, 500);
@@ -155,30 +560,109 @@ function caller (){
 }
 
 function count(){
-		let halfMoney = all.value / 2;
-		sumTimes = 0;
-		half.textContent = halfMoney;
-		for (var i = 0; i < times.length; i++){
-			sumTimes = sumTimes + Number(times[i].value);
+		let halfMoney = (all.value / 2).toFixed(2);
+		let lessMoney = (all.value * 0.15).toFixed(2);
+		let thirdMoney = (all.value * 0.35).toFixed(2);
+
+		abend.textContent = halfMoney;
+		fruh.textContent = lessMoney;
+		kuch.textContent = thirdMoney;
+
+		for (var k = 0; k < times1.length; k++){
+			timeFak1[k].textContent = (Number(faktor1[k].value)) * (Number(times1[k].value));
 		}
-		for (var j = 0; j < times.length; j++){
-			cells[j].textContent = (halfMoney/sumTimes) * Number(times[j].value);
+		for (var k = 0; k < times2.length; k++){
+			timeFak2[k].textContent = (Number(faktor2[k].value)) * (Number(times2[k].value));
+		}
+		for (var k = 0; k < times3.length; k++){
+			timeFak3[k].textContent = (Number(faktor3[k].value)) * (Number(times3[k].value));
+		}
+
+		sumTimes1 = 0;
+		for (var i = 0; i < times1.length; i++){
+			sumTimes1 = sumTimes1 + Number(timeFak1[i].textContent);
+		}
+
+		for (var j = 0; j < times1.length; j++){
+			cells1[j].textContent = ((halfMoney/sumTimes1) * (Number(timeFak1[j].textContent))).toFixed(2);
+		}
+
+		sumTimes2 = 0;
+		for (var i = 0; i < times2.length; i++){
+			sumTimes2 = sumTimes2 + Number(timeFak2[i].textContent);
+		}
+
+		for (var j = 0; j < times2.length; j++){
+			cells2[j].textContent = ((lessMoney/sumTimes2) * (Number(timeFak2[j].textContent))).toFixed(2);
+		}
+
+		sumTimes3 = 0;
+		for (var i = 0; i < times3.length; i++){
+			sumTimes3 = sumTimes3 + Number(timeFak3[i].textContent);
+		}
+
+		for (var j = 0; j < times3.length; j++){
+			cells3[j].textContent = ((thirdMoney/sumTimes3) * (Number(timeFak3[j].textContent))).toFixed(2);
 		}
 };
 
-addButton.onclick =  function myFunction() {
-  var row = table.insertRow(times.length+1);
+addButton1.onclick =  function myFunction() {
+  var row = table.insertRow(times1.length+1);
   var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
 	var cell3 = row.insertCell(2);
+	var cell4 = row.insertCell(3);
+	var cell5 = row.insertCell(4);
   cell1.innerHTML = '<input type="text">';
-  cell2.innerHTML = '<input class="short" type="text">';
-	cell3.classList.add("result");
+	cell2.innerHTML = '<input class="factor1" type="text">';
+  cell3.innerHTML = '<input class="time1" type="text">';
+	cell4.classList.add("timeFac1");
+	cell5.classList.add("result1");
 }
 
-removeButton.onclick =  function myFunction() {
-	if (times.length > 1){
-		table.deleteRow(times.length);
+removeButton1.onclick =  function myFunction() {
+	if (times1.length > 1){
+		table.deleteRow(times1.length);
+	}
+}
+
+addButton2.onclick =  function myFunction() {
+  var row = table2.insertRow(times2.length+1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+	var cell3 = row.insertCell(2);
+	var cell4 = row.insertCell(3);
+	var cell5 = row.insertCell(4);
+  cell1.innerHTML = '<input type="text">';
+	cell2.innerHTML = '<input class="factor2" type="text">';
+  cell3.innerHTML = '<input class="time2" type="text">';
+	cell4.classList.add("timeFac2");
+	cell5.classList.add("result2");
+}
+
+removeButton2.onclick =  function myFunction() {
+	if (times2.length > 1){
+		table2.deleteRow(times2.length);
+	}
+}
+
+addButton3.onclick =  function myFunction() {
+  var row = table3.insertRow(times3.length+1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+	var cell3 = row.insertCell(2);
+	var cell4 = row.insertCell(3);
+	var cell5 = row.insertCell(4);
+  cell1.innerHTML = '<input type="text">';
+	cell2.innerHTML = '<input class="factor3" type="text">';
+  cell3.innerHTML = '<input class="time3" type="text">';
+	cell4.classList.add("timeFac3");
+	cell5.classList.add("result3");
+}
+
+removeButton3.onclick =  function myFunction() {
+	if (times3.length > 1){
+		table3.deleteRow(times3.length);
 	}
 }
 
